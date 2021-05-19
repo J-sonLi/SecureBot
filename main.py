@@ -18,7 +18,7 @@ async def on_message(message):
     else:
       url = 'https://www.virustotal.com/vtapi/v2/url/report'
       params = {
-        'apikey': os.environ.get('VIRUS_TOTAL_API'),
+        'apikey': os.environ['VIRUS_TOTAL_API'],
         'resource': message.content
         }
       response = requests.get(url=url, params=params)
@@ -33,4 +33,4 @@ async def on_message(message):
           error_mark = '\N{Cross Mark}'
           await message.add_reaction(error_mark)
             
-client.run(os.environ.get('TOKEN'))
+client.run(os.environ['TOKEN'])
